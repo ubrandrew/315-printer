@@ -1,0 +1,26 @@
+{% extends "main.html"%}
+{% block head %}
+{% endblock %}
+{% block content %}
+
+<div>
+    {% with messages=get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{category}}">
+        {{message}}
+    </div>
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+
+    <div class="print-form">
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Upload a pdf</label>
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
