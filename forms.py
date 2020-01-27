@@ -17,7 +17,7 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Submit')
 
 class PrintForm(FlaskForm):
-    name = PasswordField('Job Name', validators=[DataRequired()])
+    name = TextField('Job Name', validators=[DataRequired()])
     input_file = FileField('Upload File', validators=[DataRequired()])
     quantity = IntegerField("Quantity", default=1)
     submit = SubmitField('Submit')
