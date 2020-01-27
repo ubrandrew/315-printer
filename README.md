@@ -1,2 +1,2 @@
 # 315-printer
-cloud printing
+'cloud' printing
