@@ -25,8 +25,9 @@ def home():
     if form.validate_on_submit() and request.method == 'POST':
         input_file = request.files['input_file']
         filename = secure_filename(input_file.filename)
-        input_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        os.system(f'lp -dHP_LaserJet_1018 {filename}')
+        path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        input_file.save(path)
+        os.system(f'lp -dHP_LaserJet_1018 {path}')
         flash("Printed successfully")
     return render_template('home.html', title='home', form=form)
 
