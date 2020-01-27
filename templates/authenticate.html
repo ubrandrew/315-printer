@@ -3,31 +3,33 @@
 {% endblock %}
 {% block content %}
 
-<div class="signup-form">
-    {% with messages=get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-    {% for category, message in messages %}
-    <div class="alert alert-{{category}}">
-        {{message}}
-    </div>
-    {%endfor%}
-    {%endif%}
-    {%endwith%}
-    <form action="" method="post">
-        {{form.hidden_tag()}}
-        <h1>315 Printer</h1>
+<body class="login-body">
+    <div class="signup-form">
+        {% with messages=get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{category}}">
+            {{message}}
+        </div>
+        {%endfor%}
+        {%endif%}
+        {%endwith%}
+        <form action="" method="post">
+            {{form.hidden_tag()}}
+            <h1>315 Printer</h1>
 
-        <div class="form-group">
-            <div class="col-xs-6">
-                {{form.password.label(class="form-control-label password-label")}}
-                {{form.password(class="form-control", placeholder="password")}}
-                <!-- <input type="password" class="form-control" name="password" placeholder="password" required="required"> -->
+            <div class="form-group">
+                <div class="col-xs-6">
+                    {{form.password.label(class="form-control-label password-label")}}
+                    {{form.password(class="form-control", placeholder="password")}}
+                    <!-- <input type="password" class="form-control" name="password" placeholder="password" required="required"> -->
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            {{form.submit(class="btn btn-success btn-lg btn-block")}}
-            <!-- <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button> -->
-        </div>
-    </form>
-</div>
+            <div class="form-group">
+                {{form.submit(class="btn btn-success btn-lg btn-block")}}
+                <!-- <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button> -->
+            </div>
+        </form>
+    </div>
+</body>
 {% endblock %}

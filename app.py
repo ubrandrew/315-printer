@@ -1,5 +1,5 @@
 from flask import Flask, escape, request, render_template, flash, redirect, url_for
-from forms import LoginForm
+from forms import LoginForm, GuestForm, RegistrationForm, PrintForm
 from flask_bcrypt import Bcrypt
 import os
 
@@ -11,13 +11,18 @@ bcrypt = Bcrypt(app)
 @app.route('/')
 @app.route('/home')
 def home():
-    return render_template('home.html', title='home')
+    form = PrintForm()
+    if form.validate_on_submit():
+         pass
+    return render_template('home.html', title='home', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm()
+    form = GuestForm()
     if form.validate_on_submit():
-        if form.password.data == PASS:
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        print(hashed_password)
+        if bcrypt.check_password_hash(hashed_password, PASS):
             flash('Login successful', 'success')
             return redirect(url_for('home'))
         else:
