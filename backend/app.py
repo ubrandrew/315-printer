@@ -7,11 +7,11 @@ import pathlib
 import jwt
 import datetime
 from werkzeug.utils import secure_filename
-from config import KEY
+from config import KEY, JWT_SECRET
 
 
 PASS = KEY
-SECRET = os.environ.get('JWT_SECRET')
+SECRET = JWT_SECRET
 UPLOAD_FOLDER = os.path.join(os.getcwd(), 'temp_doc_store')
 
 app = Flask(__name__)
@@ -28,7 +28,7 @@ app.config['SECRET_KEY'] = SECRET
 app.config['JWT_ACCESS_TOKEN_EXPIRES'] = datetime.timedelta(days=30)
 
 @app.route('/print', methods=['GET','POST'])
-def print():
+def print_file():
     if request.method == 'POST':
         input_file = request.files['file']
         filename = secure_filename(input_file.filename)
@@ -39,7 +39,6 @@ def print():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    print(request.json)
     if request.method == 'POST':
         if bcrypt.check_password_hash(PASS, request.json['creds']):
             response = {}
