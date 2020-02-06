@@ -35,7 +35,7 @@ def print_file():
         path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         input_file.save(path)
         os.system(f'lp -dHP_LaserJet_1018 {path}')
-    return "ok"
+    return {"response": "ok"}
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

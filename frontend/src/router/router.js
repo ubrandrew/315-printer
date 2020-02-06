@@ -8,12 +8,12 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/login",
     name: "login",
     component: LoginPage
   },
   {
-    path: "/print",
+    path: "/",
     name: "print",
     component: PrintPage,
     meta: {
@@ -33,7 +33,7 @@ router.beforeEach((to, from, next) => {
       next()
       return
     }
-    next('/')
+    next('/login')
   } else {
     next()
   }

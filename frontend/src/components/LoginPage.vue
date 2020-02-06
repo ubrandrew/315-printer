@@ -65,11 +65,10 @@ export default {
 
 #app {
     height: 100%;
-    background: #4d94ff;
 }
 .login-body {
     color: #fff;
-    background: #4d94ff;
+    background-color: #4d94ff;
     font-family: 'Roboto', sans-serif;
 }
 

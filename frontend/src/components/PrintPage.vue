@@ -116,6 +116,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#app {
+    background: #fff;
+}
 .logout {
     float: right;
 }
